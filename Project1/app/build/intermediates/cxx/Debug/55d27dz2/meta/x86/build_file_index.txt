@@ -1,1 +1,0 @@
-/Users/milana_shakhbieva/AndroidStudioProjects/Project1/app/src/main/cpp/CMakeLists.txt

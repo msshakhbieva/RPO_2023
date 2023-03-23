@@ -1,3 +1,0 @@
-/Users/milana_shakhbieva/AndroidStudioProjects/Project1/app/.cxx/Debug/55d27dz2/x86/CMakeFiles/project1.dir
-/Users/milana_shakhbieva/AndroidStudioProjects/Project1/app/.cxx/Debug/55d27dz2/x86/CMakeFiles/edit_cache.dir
-/Users/milana_shakhbieva/AndroidStudioProjects/Project1/app/.cxx/Debug/55d27dz2/x86/CMakeFiles/rebuild_cache.dir
