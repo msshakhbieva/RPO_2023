@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "/Users/milana_shakhbieva/AndroidStudioProjects/Project1/app/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/milana_shakhbieva/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/milana_shakhbieva/AndroidStudioProjects/Project1/app/.cxx/Debug/55d27dz2/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/milana_shakhbieva/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/milana_shakhbieva/AndroidStudioProjects/Project1/app/.cxx/Debug/55d27dz2/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "project1::@6890427a1f51a3e7e1df": {
+      "artifactName": "project1",
+      "abi": "x86",
+      "output": "/Users/milana_shakhbieva/AndroidStudioProjects/Project1/app/build/intermediates/cxx/Debug/55d27dz2/obj/x86/libproject1.so",
+      "runtimeFiles": []
+    }
+  }
+}

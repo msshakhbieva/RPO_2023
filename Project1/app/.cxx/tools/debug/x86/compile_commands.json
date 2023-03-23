@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/milana_shakhbieva/AndroidStudioProjects/Project1/app/.cxx/Debug/55d27dz2/x86",
+  "command": "/Users/milana_shakhbieva/Library/Android/sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android24 --sysroot=/Users/milana_shakhbieva/Library/Android/sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dproject1_EXPORTS -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fexceptions -frtti -stdlib=libc++ -g  -fno-limit-debug-info -fPIC -o CMakeFiles/project1.dir/native-lib.cpp.o -c /Users/milana_shakhbieva/AndroidStudioProjects/Project1/app/src/main/cpp/native-lib.cpp",
+  "file": "/Users/milana_shakhbieva/AndroidStudioProjects/Project1/app/src/main/cpp/native-lib.cpp"
+}
+]
