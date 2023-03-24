@@ -19,7 +19,7 @@ import ru.iu3.fclient.databinding.ActivityMainBinding;
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  implements TransactionEvents {
 
     // Used to load the 'fclient' library on application startup.
     static {
@@ -50,8 +50,12 @@ public class MainActivity extends AppCompatActivity {
                         if (result.getResultCode() == Activity.RESULT_OK) {
                             Intent data = result.getData();
                             // обработка результата
-                            String pin = data.getStringExtra("pin");
-                            Toast.makeText(MainActivity.this, pin, Toast.LENGTH_SHORT).show();
+                            //String pin = data.getStringExtra("pin");
+                            //Toast.makeText(MainActivity.this, pin, Toast.LENGTH_SHORT).show();
+                            pin = data.getStringExtra("pin");
+                            synchronized (MainActivity.this) {
+                                MainActivity.this.notifyAll();
+                            }
                         }
                     }
                 });
@@ -71,17 +75,48 @@ public class MainActivity extends AppCompatActivity {
     }
     public void onButtonClick(View v)
     {
-        Intent it = new Intent(this, PinpadActivity.class);
-        //startActivity(it);
-        activityResultLauncher.launch(it);
+        new Thread(()-> {
+            try {
+                byte[] trd = stringToHex("9F0206000000000100");
+                boolean ok = transaction(trd);
 
+            } catch (Exception ex) {
+                // todo: log error
+            }
+        }).start();
     }
 
+    private String pin;
+
+
+    @Override
+    public String enterPin(int ptc, String amount) {
+        pin = new String();
+        Intent it = new Intent(MainActivity.this, PinpadActivity.class);
+        it.putExtra("ptc", ptc);
+        it.putExtra("amount", amount);
+        synchronized (MainActivity.this) {
+            activityResultLauncher.launch(it);
+            try {
+                MainActivity.this.wait();
+            } catch (Exception ex) {
+                //todo: log error
+            }
+        }
+        return pin;
+    }
+    @Override
+    public void transactionResult(boolean result) {
+        runOnUiThread(()-> {
+            Toast.makeText(MainActivity.this, result ? "ok" : "failed", Toast.LENGTH_SHORT).show();
+        });
+    }
 
     /**
      * A native method that is implemented by the 'fclient' native library,
      * which is packaged with this application.
      */
+    public native boolean transaction(byte[] trd);
     public native String stringFromJNI();
     public static native int initRng();
     public static native byte[] randomBytes(int no);

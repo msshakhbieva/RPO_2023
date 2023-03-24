@@ -3,6 +3,7 @@ package ru.iu3.fclient;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.icu.text.DecimalFormat;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,7 @@ public class PinpadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pinpad);
 
-        tvPin = findViewById(R.id.txtPin);
+       tvPin = findViewById(R.id.txtPin);
 
         ShuffleKeys();
 
@@ -38,6 +39,19 @@ public class PinpadActivity extends AppCompatActivity {
             setResult(RESULT_OK, it);
             finish();
         });
+        TextView ta = findViewById(R.id.txtAmount);
+        String amt = String.valueOf(getIntent().getStringExtra("amount"));
+        Long f = Long.valueOf(amt);
+        DecimalFormat df = new DecimalFormat("#,###,###,##0.00");
+        String s = df.format(f);
+        ta.setText("Сумма: " + s);
+
+        TextView tp = findViewById(R.id.txtPtc);
+        int pts = getIntent().getIntExtra("ptc", 0);
+        if (pts == 2)
+            tp.setText("Осталось две попытки");
+        else if (pts == 1)
+            tp.setText("Осталась одна попытка");
     }
 
     public void keyClick(View v)
