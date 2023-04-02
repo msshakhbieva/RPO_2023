@@ -24,9 +24,6 @@ public class PinpadActivity extends AppCompatActivity {
 
         ShuffleKeys();
 
-        findViewById(R.id.btnOK).setOnClickListener((View) -> {
-            finish();
-        });
 
         findViewById(R.id.btnReset).setOnClickListener((View) -> {
             pin = "";
